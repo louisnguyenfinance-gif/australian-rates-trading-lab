@@ -111,9 +111,10 @@ st.caption(
 )
 
 
-tab1, tab2 = st.tabs([
+tab1, tab2, tab3 = st.tabs([
     "Single Bond",
-    "Portfolio Stress Test"
+    "Portfolio Stress Test",
+    "Rates Scenario Lab"
 ])
 
 
@@ -570,7 +571,364 @@ with tab2:
         "Duration + Convexity P&L",
         f"${total_approx_pnl:,.2f}"
     )
+# ===================================================
+# RATES SCENARIO LAB
+# ===================================================
 
+with tab3:
+
+    st.header("Australian Rates Scenario Lab")
+
+    st.write(
+        """
+        Test how non-parallel changes in the Australian Government
+        yield curve affect an illustrative 2Y / 5Y / 10Y bond portfolio.
+        """
+    )
+
+    # Load latest Australian yield curve
+    yields_data = pd.read_csv(
+        "data/processed/au_government_yields.csv",
+        parse_dates=["Date"]
+    )
+
+    latest = yields_data.iloc[-1]
+
+    current_curve = {
+        "2Y": latest["2Y"],
+        "3Y": latest["3Y"],
+        "5Y": latest["5Y"],
+        "10Y": latest["10Y"]
+    }
+
+    st.caption(
+        f"Current curve observation: {latest['Date'].date()}"
+    )
+
+    # ---------------------------------------------------
+    # Scenario selection
+    # ---------------------------------------------------
+
+    scenario_choice = st.selectbox(
+        "Scenario",
+        [
+            "Historical Dovish Repricing — May 2025",
+            "Historical Bear Flattening — July 2025",
+            "Hypothetical Long-End Selloff",
+            "Custom Scenario"
+        ]
+    )
+
+    if scenario_choice == "Historical Dovish Repricing — May 2025":
+
+        shocks = {
+            "2Y": -16.4,
+            "3Y": -16.9,
+            "5Y": -15.5,
+            "10Y": -12.4
+        }
+
+    elif scenario_choice == "Historical Bear Flattening — July 2025":
+
+        shocks = {
+            "2Y": 11.6,
+            "3Y": 11.1,
+            "5Y": 10.6,
+            "10Y": 8.1
+        }
+
+    elif scenario_choice == "Hypothetical Long-End Selloff":
+
+        shocks = {
+            "2Y": 5.0,
+            "3Y": 8.0,
+            "5Y": 15.0,
+            "10Y": 30.0
+        }
+
+    else:
+
+        s1, s2, s3, s4 = st.columns(4)
+
+        with s1:
+            shock_2y = st.number_input(
+                "2Y Shock (bp)",
+                value=0.0
+            )
+
+        with s2:
+            shock_3y = st.number_input(
+                "3Y Shock (bp)",
+                value=0.0
+            )
+
+        with s3:
+            shock_5y = st.number_input(
+                "5Y Shock (bp)",
+                value=0.0
+            )
+
+        with s4:
+            shock_10y = st.number_input(
+                "10Y Shock (bp)",
+                value=0.0
+            )
+
+        shocks = {
+            "2Y": shock_2y,
+            "3Y": shock_3y,
+            "5Y": shock_5y,
+            "10Y": shock_10y
+        }
+
+
+    # ---------------------------------------------------
+    # Shocked curve
+    # ---------------------------------------------------
+
+    shocked_curve = {
+        tenor: current_curve[tenor] + shocks[tenor] / 100
+        for tenor in current_curve
+    }
+
+
+    current_2s10s = (
+        current_curve["10Y"]
+        - current_curve["2Y"]
+    ) * 100
+
+    shocked_2s10s = (
+        shocked_curve["10Y"]
+        - shocked_curve["2Y"]
+    ) * 100
+
+    curve_change = (
+        shocked_2s10s - current_2s10s
+    )
+
+    average_shock = np.mean(
+        list(shocks.values())
+    )
+
+
+    if average_shock < 0:
+        direction = "Bull"
+    elif average_shock > 0:
+        direction = "Bear"
+    else:
+        direction = "Neutral"
+
+
+    if curve_change > 0:
+        shape = "Steepening"
+    elif curve_change < 0:
+        shape = "Flattening"
+    else:
+        shape = "Unchanged"
+
+
+    classification = f"{direction} {shape}"
+
+
+    # ---------------------------------------------------
+    # Display curve metrics
+    # ---------------------------------------------------
+
+       # ---------------------------------------------------
+    # Display curve metrics
+    # ---------------------------------------------------
+
+    m1, m2, m3 = st.columns([1.5, 1, 1])
+
+    with m1:
+        st.caption("Curve Classification")
+        st.subheader(classification)
+
+    with m2:
+        st.metric(
+            "Current 2s10s",
+            f"{current_2s10s:.1f} bp"
+        )
+
+    with m3:
+        st.metric(
+            "2s10s Change",
+            f"{curve_change:+.1f} bp"
+        )
+
+
+    # ---------------------------------------------------
+    # Yield curve chart
+    # ---------------------------------------------------
+
+    maturities = [2, 3, 5, 10]
+    tenors = ["2Y", "3Y", "5Y", "10Y"]
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+
+    ax.plot(
+        maturities,
+        [current_curve[t] for t in tenors],
+        marker="o",
+        label="Current"
+    )
+
+    ax.plot(
+        maturities,
+        [shocked_curve[t] for t in tenors],
+        marker="o",
+        label="Scenario"
+    )
+
+    ax.set_title(
+        "Australian Government Yield Curve"
+    )
+
+    ax.set_xlabel("Maturity (Years)")
+    ax.set_ylabel("Yield (%)")
+    ax.set_xticks(maturities)
+
+    ax.legend()
+    ax.grid(alpha=0.3)
+
+    st.pyplot(fig)
+
+
+    # ---------------------------------------------------
+    # Portfolio scenario P&L
+    # ---------------------------------------------------
+
+    scenario_portfolio = pd.DataFrame({
+        "Bond": [
+            "2Y Bond",
+            "5Y Bond",
+            "10Y Bond"
+        ],
+
+        "Coupon": [
+            0.040,
+            0.045,
+            0.050
+        ],
+
+        "YTM": [
+            current_curve["2Y"] / 100,
+            current_curve["5Y"] / 100,
+            current_curve["10Y"] / 100
+        ],
+
+        "Years": [
+            2,
+            5,
+            10
+        ],
+
+        "Notional": [
+            2_000_000,
+            3_000_000,
+            1_500_000
+        ],
+
+        "Tenor": [
+            "2Y",
+            "5Y",
+            "10Y"
+        ]
+    })
+
+
+    pnl_results = []
+
+    for _, bond in scenario_portfolio.iterrows():
+
+        old_price = bond_price(
+            100,
+            bond["Coupon"],
+            bond["YTM"],
+            bond["Years"],
+            2
+        )
+
+        shock_bp = shocks[bond["Tenor"]]
+
+        new_yield = (
+            bond["YTM"]
+            + shock_bp / 10000
+        )
+
+        new_price = bond_price(
+            100,
+            bond["Coupon"],
+            new_yield,
+            bond["Years"],
+            2
+        )
+
+        pnl = (
+            (new_price - old_price)
+            / 100
+            * bond["Notional"]
+        )
+
+        pnl_results.append({
+            "Bond": bond["Bond"],
+            "Yield Shock (bp)": shock_bp,
+            "P&L ($)": pnl
+        })
+
+
+    scenario_results = pd.DataFrame(
+        pnl_results
+    )
+
+
+    st.subheader("Portfolio Impact")
+
+    st.dataframe(
+        scenario_results.style.format({
+            "Yield Shock (bp)": "{:+.1f}",
+            "P&L ($)": "${:,.2f}"
+        }),
+        use_container_width=True
+    )
+
+
+    total_scenario_pnl = (
+        scenario_results["P&L ($)"].sum()
+    )
+
+    st.metric(
+        "Total Portfolio P&L",
+        f"${total_scenario_pnl:,.2f}"
+    )
+
+
+    fig2, ax2 = plt.subplots(figsize=(9, 5))
+
+    ax2.bar(
+        scenario_results["Bond"],
+        scenario_results["P&L ($)"]
+    )
+
+    ax2.axhline(0, linewidth=1)
+
+    ax2.set_title(
+        f"Portfolio P&L — {scenario_choice}"
+    )
+
+    ax2.set_ylabel("P&L ($)")
+    ax2.grid(axis="y", alpha=0.3)
+
+    st.pyplot(fig2)
+
+
+    st.caption(
+        """
+        Historical scenarios use observed one-day yield changes from
+        the RBA event study. Portfolio positions and hypothetical
+        scenarios are illustrative and are not forecasts.
+        """
+    )
 
 st.divider()
 
