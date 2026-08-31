@@ -67,4 +67,29 @@ This component examines how Australian Government bond yields behaved around RBA
 
 ### 2s10s Curve Reactions
 
-![RBA 2s10s Reactions](outputs/charts/rba_2s10s_reactions.png)
+![RBA 2s10s Reactions](outputs/charts/rba_2s10s_reactions.png)---
+
+## Component 3 — Bond Risk & P&L Engine
+
+This component translates interest-rate movements into bond and portfolio risk using pricing, duration, convexity and DV01.
+
+### Key Findings
+
+- The illustrative 5-year bond priced below par because its 4.0% coupon was below its 4.5% yield.
+- Modified duration provides a first-order estimate of price sensitivity to yield movements.
+- DV01 converts this sensitivity into the approximate dollar P&L impact of a 1 bp yield move.
+- Convexity materially improves price-change estimates for larger yield shocks.
+- At the portfolio level, DV01 identifies where interest-rate risk is concentrated across maturities.
+- Parallel yield shocks can then be translated directly into estimated portfolio P&L.
+
+### Bond Price Sensitivity
+
+![Bond Price Sensitivity](outputs/charts/bond_price_sensitivity.png)
+
+### Portfolio DV01
+
+![Portfolio DV01](outputs/charts/portfolio_dv01.png)
+
+### Portfolio P&L Under +25 bp Shock
+
+![Portfolio P&L](outputs/charts/portfolio_25bp_pnl.png)
