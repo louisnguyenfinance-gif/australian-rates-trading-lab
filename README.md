@@ -1,4 +1,4 @@
-# Australian-rates-trading-lab
+# Australian rates trading lab
 Python-based analysis of Australian yield curves, RBA policy events, fixed-income risk and rates trading scenarios.
 ## Project Overview
 This project explores the Australian interest-rate market using Python,
@@ -14,7 +14,7 @@ The Australian Rates Trading Lab also includes an interactive Python-based
 risk engine for exploring bond pricing, DV01, convexity, portfolio stress
 testing and non-parallel yield-curve scenarios.
 
-### [Launch Interactive Australian Rates Risk Engine →]https://australian-rates-trading-lab-mgh4vubhmk2m3ff6ekwekr.streamlit.app/
+### [Launch Interactive Australian Rates Risk Engine →](https://australian-rates-trading-lab-mgh4vubhmk2m3ff6ekwekr.streamlit.app/)
 ## Components
 
 1. Australian Government Yield Curve Analysis
@@ -52,9 +52,9 @@ Australia data.
 
 ### 2s10s Curve
 
-![Australian 2s10s Curve](outputs/charts/australian_2s10s_curve.png)!---
+![Australian 2s10s Curve](outputs/charts/australian_2s10s_curve.png)
 
-## Component 2 — RBA Monetary Policy Event Study
+## Component 2 : RBA Monetary Policy Event Study
 
 This component examines how Australian Government bond yields behaved around RBA monetary-policy decisions across the 2-year, 3-year, 5-year and 10-year maturities.
 
@@ -72,9 +72,9 @@ This component examines how Australian Government bond yields behaved around RBA
 
 ### 2s10s Curve Reactions
 
-![RBA 2s10s Reactions](outputs/charts/rba_2s10s_reactions.png)---
+![RBA 2s10s Reactions](outputs/charts/rba_2s10s_reactions.png)
 
-## Component 3 — Bond Risk & P&L Engine
+## Component 3 : Bond Risk & P&L Engine
 
 This component translates interest-rate movements into bond and portfolio risk using pricing, duration, convexity and DV01.
 ### Interactive Risk Engine
@@ -82,7 +82,7 @@ This component translates interest-rate movements into bond and portfolio risk u
 Explore the calculations dynamically by changing bond characteristics,
 portfolio notionals and interest-rate shocks.
 
-[Launch the Interactive Risk Engine →]https://australian-rates-trading-lab-mgh4vubhmk2m3ff6ekwekr.streamlit.app/
+[Launch the Interactive Risk Engine →](https://australian-rates-trading-lab-mgh4vubhmk2m3ff6ekwekr.streamlit.app/)
 ### Key Findings
 
 - The illustrative 5-year bond priced below par because its 4.0% coupon was below its 4.5% yield.
@@ -102,9 +102,9 @@ portfolio notionals and interest-rate shocks.
 
 ### Portfolio P&L Under +25 bp Shock
 
-![Portfolio P&L](outputs/charts/portfolio_25bp_pnl.png)---
+![Portfolio P&L](outputs/charts/portfolio_25bp_pnl.png)
 
-## Component 4 — Australian Rates Market View & Scenario Lab
+## Component 4 : Australian Rates Market View & Scenario Lab
 
 This component combines the Australian yield-curve analysis, RBA event study and fixed-income risk engine to examine portfolio outcomes under historical and hypothetical non-parallel yield-curve scenarios.
 
@@ -122,7 +122,7 @@ The first two scenarios reproduce observed one-day Australian Government bond yi
 Test historical and custom non-parallel Australian yield-curve scenarios
 and observe the resulting portfolio P&L.
 
-[Open the Rates Scenario Lab →]https://australian-rates-trading-lab-mgh4vubhmk2m3ff6ekwekr.streamlit.app/
+[Open the Rates Scenario Lab →](https://australian-rates-trading-lab-mgh4vubhmk2m3ff6ekwekr.streamlit.app/)
 ### Key Findings
 
 - Portfolio outcomes vary materially depending on how different parts of the yield curve move.
