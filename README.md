@@ -1,7 +1,6 @@
 # Australian-rates-trading-lab
 Python-based analysis of Australian yield curves, RBA policy events, fixed-income risk and rates trading scenarios.
 ## Project Overview
-
 This project explores the Australian interest-rate market using Python,
 with a focus on yield-curve dynamics, RBA monetary-policy events,
 fixed-income risk and rates trading scenarios.
@@ -9,7 +8,13 @@ fixed-income risk and rates trading scenarios.
 The objective is to understand how macroeconomic information and
 monetary-policy expectations translate into market pricing, curve
 movements and portfolio risk.
+## Interactive Rates Analytics
 
+The Australian Rates Trading Lab also includes an interactive Python-based
+risk engine for exploring bond pricing, DV01, convexity, portfolio stress
+testing and non-parallel yield-curve scenarios.
+
+### [Launch Interactive Australian Rates Risk Engine →]https://australian-rates-trading-lab-mgh4vubhmk2m3ff6ekwekr.streamlit.app/
 ## Components
 
 1. Australian Government Yield Curve Analysis
@@ -72,7 +77,12 @@ This component examines how Australian Government bond yields behaved around RBA
 ## Component 3 — Bond Risk & P&L Engine
 
 This component translates interest-rate movements into bond and portfolio risk using pricing, duration, convexity and DV01.
+### Interactive Risk Engine
 
+Explore the calculations dynamically by changing bond characteristics,
+portfolio notionals and interest-rate shocks.
+
+[Launch the Interactive Risk Engine →]https://australian-rates-trading-lab-mgh4vubhmk2m3ff6ekwekr.streamlit.app/
 ### Key Findings
 
 - The illustrative 5-year bond priced below par because its 4.0% coupon was below its 4.5% yield.
@@ -107,7 +117,12 @@ The analysis considers three different Australian rates environments:
 - **Hypothetical Long-End Selloff:** long-term yields rise substantially more than front-end yields, producing a bear steepening.
 
 The first two scenarios reproduce observed one-day Australian Government bond yield movements around RBA meetings. The third is an illustrative stress scenario designed to test long-duration risk.
+### Interactive Scenario Lab
 
+Test historical and custom non-parallel Australian yield-curve scenarios
+and observe the resulting portfolio P&L.
+
+[Open the Rates Scenario Lab →]https://australian-rates-trading-lab-mgh4vubhmk2m3ff6ekwekr.streamlit.app/
 ### Key Findings
 
 - Portfolio outcomes vary materially depending on how different parts of the yield curve move.
