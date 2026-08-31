@@ -14,7 +14,7 @@ The Australian Rates Trading Lab also includes an interactive Python-based
 risk engine for exploring bond pricing, DV01, convexity, portfolio stress
 testing and non-parallel yield-curve scenarios.
 
-### [Launch Interactive Australian Rates Risk Engine →](https://australian-rates-trading-lab-mgh4vubhmk2m3ff6ekwekr.streamlit.app/)
+### [Launch Interactive Australian Rates Risk Engine →](https://australian-rates-trading-lab-louis.streamlit.app/)
 ## Components
 
 1. Australian Government Yield Curve Analysis
@@ -82,7 +82,7 @@ This component translates interest-rate movements into bond and portfolio risk u
 Explore the calculations dynamically by changing bond characteristics,
 portfolio notionals and interest-rate shocks.
 
-[Launch the Interactive Risk Engine →](https://australian-rates-trading-lab-mgh4vubhmk2m3ff6ekwekr.streamlit.app/)
+[Launch the Interactive Risk Engine →](https://australian-rates-trading-lab-louis.streamlit.app/)
 ### Key Findings
 
 - The illustrative 5-year bond priced below par because its 4.0% coupon was below its 4.5% yield.
@@ -122,7 +122,7 @@ The first two scenarios reproduce observed one-day Australian Government bond yi
 Test historical and custom non-parallel Australian yield-curve scenarios
 and observe the resulting portfolio P&L.
 
-[Open the Rates Scenario Lab →](https://australian-rates-trading-lab-mgh4vubhmk2m3ff6ekwekr.streamlit.app/)
+[Open the Rates Scenario Lab →](https://australian-rates-trading-lab-louis.streamlit.app/)
 ### Key Findings
 
 - Portfolio outcomes vary materially depending on how different parts of the yield curve move.
