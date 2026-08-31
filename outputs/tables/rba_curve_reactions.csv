@@ -1,0 +1,14 @@
+Meeting Date,Decision Type,Decision (bp),2s10s Change (bp),Curve Move
+2025-02-18,Cut,-25,0.0,Unchanged
+2025-04-01,Hold,0,-0.2,Flattening
+2025-05-20,Cut,-25,4.0,Steepening
+2025-07-08,Hold,0,-3.5,Flattening
+2025-08-12,Cut,-25,0.5,Steepening
+2025-09-30,Hold,0,-4.7,Flattening
+2025-11-04,Hold,0,-1.0,Flattening
+2025-12-09,Hold,0,-4.3,Flattening
+2026-02-03,Hike,25,-3.7,Flattening
+2026-03-17,Hike,25,-4.0,Flattening
+2026-05-05,Hike,25,1.1,Steepening
+2026-06-16,Hold,0,2.4,Steepening
+2026-08-11,Hold,0,1.5,Steepening

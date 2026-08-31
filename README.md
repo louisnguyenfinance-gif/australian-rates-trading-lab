@@ -1,4 +1,4 @@
-# australian-rates-trading-lab
+# Australian-rates-trading-lab
 Python-based analysis of Australian yield curves, RBA policy events, fixed-income risk and rates trading scenarios.
 ## Project Overview
 
@@ -19,7 +19,7 @@ movements and portfolio risk.
 
 ---
 
-## Component 1 — Australian Yield Curve Analysis
+## Component 1 : Australian Yield Curve Analysis
 
 The first component examines Australian Government bond yields across
 the 2-year, 3-year, 5-year and 10-year maturities using Reserve Bank of
@@ -47,4 +47,24 @@ Australia data.
 
 ### 2s10s Curve
 
-![Australian 2s10s Curve](outputs/charts/australian_2s10s_curve.png)
+![Australian 2s10s Curve](outputs/charts/australian_2s10s_curve.png)!---
+
+## Component 2 — RBA Monetary Policy Event Study
+
+This component examines how Australian Government bond yields behaved around RBA monetary-policy decisions across the 2-year, 3-year, 5-year and 10-year maturities.
+
+### Key Findings
+
+- Rate cuts generated the largest average absolute market reactions in the sample.
+- On average, cuts were associated with larger declines in front-end yields than in the 10-year yield, producing modest 2s10s steepening.
+- Hold decisions still generated meaningful repricing, demonstrating that unchanged policy rates do not imply unchanged market expectations.
+- Identical headline decisions produced very different yield reactions across meetings.
+- The results reinforce that rates markets respond to outcomes relative to expectations rather than mechanically to the direction of a policy decision.
+
+### Yield Reactions Around RBA Decisions
+
+![RBA Yield Reactions](outputs/charts/rba_yield_reactions.png)
+
+### 2s10s Curve Reactions
+
+![RBA 2s10s Reactions](outputs/charts/rba_2s10s_reactions.png)
