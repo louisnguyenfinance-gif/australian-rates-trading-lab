@@ -92,4 +92,38 @@ This component translates interest-rate movements into bond and portfolio risk u
 
 ### Portfolio P&L Under +25 bp Shock
 
-![Portfolio P&L](outputs/charts/portfolio_25bp_pnl.png)
+![Portfolio P&L](outputs/charts/portfolio_25bp_pnl.png)---
+
+## Component 4 — Australian Rates Market View & Scenario Lab
+
+This component combines the Australian yield-curve analysis, RBA event study and fixed-income risk engine to examine portfolio outcomes under historical and hypothetical non-parallel yield-curve scenarios.
+
+### Scenarios
+
+The analysis considers three different Australian rates environments:
+
+- **Historical Dovish Repricing — May 2025:** yields declined across the curve, with the front end falling more than the long end, producing a bull steepening.
+- **Historical Bear Flattening — July 2025:** yields increased across the curve, with front-end yields rising more strongly than the long end.
+- **Hypothetical Long-End Selloff:** long-term yields rise substantially more than front-end yields, producing a bear steepening.
+
+The first two scenarios reproduce observed one-day Australian Government bond yield movements around RBA meetings. The third is an illustrative stress scenario designed to test long-duration risk.
+
+### Key Findings
+
+- Portfolio outcomes vary materially depending on how different parts of the yield curve move.
+- The historical dovish repricing generated positive P&L for the illustrative long-only bond portfolio as yields declined.
+- The historical bear flattening generated losses as yields increased across the curve.
+- The hypothetical long-end selloff produced the largest portfolio loss, highlighting the sensitivity of long-duration exposure to long-end repricing.
+- These results demonstrate why portfolio rates risk cannot be fully understood using only parallel yield shocks.
+
+### Australian Rates Scenarios
+
+![Australian Rates Scenarios](outputs/charts/australian_rates_scenarios.png)
+
+### Portfolio P&L Across Scenarios
+
+![Scenario Portfolio P&L](outputs/charts/scenario_portfolio_pnl.png)
+
+### Methodology Note
+
+Historical scenarios use observed yield changes from the RBA event study. The portfolio positions and hypothetical long-end selloff are illustrative. The analysis is designed as a risk-management and scenario-testing framework rather than a market forecast.

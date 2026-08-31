@@ -1,0 +1,10 @@
+Scenario,Bond,Yield Shock (bp),Exact P&L ($)
+Historical Dovish Repricing — May 2025,2Y Bond,-16.4,6163.938254811398
+Historical Dovish Repricing — May 2025,5Y Bond,-15.5,20530.065199606186
+Historical Dovish Repricing — May 2025,10Y Bond,-12.4,14551.529366743736
+Historical Bear Flattening — Jul 2025,2Y Bond,11.6,-4345.114642090664
+Historical Bear Flattening — Jul 2025,5Y Bond,10.6,-13945.025660613623
+Historical Bear Flattening — Jul 2025,10Y Bond,8.1,-9413.820010593596
+Hypothetical Long-End Selloff,2Y Bond,5.0,-1874.389143559938
+Hypothetical Long-End Selloff,5Y Bond,15.0,-19711.022263540057
+Hypothetical Long-End Selloff,10Y Bond,30.0,-34508.745272813496
